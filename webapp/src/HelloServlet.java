@@ -21,9 +21,9 @@ public class HelloServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();  //это мы запрос печатаем на странице
 
         HttpSession session = req.getSession();
-        if (session.getAttribute("isRegistreted") != null && session.getAttribute("isRegistreted").equals(true)) {
-            out.print("You already have account, just sign in");
-        } else {
+//        if (session.getAttribute("isRegistreted") != null && session.getAttribute("isRegistreted").equals(true)) {
+//            out.print("You already have account, just sign in");
+//        } else {
 //            resp.setStatus(HttpServletResponse.SC_OK);
 
             if (req.getMethod().equals("GET")) {
@@ -45,7 +45,7 @@ public class HelloServlet extends HttpServlet {
                 out.print("Пароль " + login + "<br>");
                 out.print("Согласен ли ты с политикой обработки данных: " + agree + "<br>");
                 out.println("Мой первый servlet, " + "метод: " + req.getMethod() + "<br>");
-                out.println("session account: " + session.getAttribute("sRegistreted"));
+                out.println("session account: " + session.getAttribute("isRegistreted"));
 
                 User alone = new User(firstName, login);
 
@@ -60,4 +60,4 @@ public class HelloServlet extends HttpServlet {
 
 
     }
-}
+
