@@ -24,7 +24,7 @@ public class HelloServlet extends HttpServlet {
         if (session.getAttribute("isRegistreted") != null && session.getAttribute("isRegistreted").equals(true)) {
             out.print("You already have account, just sign in");
         } else {
-            resp.setStatus(HttpServletResponse.SC_OK);
+//            resp.setStatus(HttpServletResponse.SC_OK);
 
             if (req.getMethod().equals("GET")) {
                 System.out.println("Мы не поддерживаем работу с методом GET");
@@ -39,17 +39,19 @@ public class HelloServlet extends HttpServlet {
                     agree = "НЕТ";
                 }
 
+                session.setAttribute("isRegistreted", firstName);
 
                 out.print("Name " + firstName + "<br>");
                 out.print("Пароль " + login + "<br>");
                 out.print("Согласен ли ты с политикой обработки данных: " + agree + "<br>");
-                out.println("Мой первый servlet, " + "метод: " + req.getMethod());
+                out.println("Мой первый servlet, " + "метод: " + req.getMethod() + "<br>");
+                out.println("session account: " + session.getAttribute("sRegistreted"));
 
                 User alone = new User(firstName, login);
 
                 userRegistated.addNewUsers(alone);
 
-                session.setAttribute("isRegistreted", true);
+
                 session.setMaxInactiveInterval(20);
                 userRegistated.getList();
             }
