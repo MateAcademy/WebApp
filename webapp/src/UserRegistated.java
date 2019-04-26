@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class UserRegistated {
+public class UserRegistated {     //Strage
     private static final List<User> list = new ArrayList<>();
 
     void addNewUsers(User alone) {

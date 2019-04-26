@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.lang.reflect.Array" %>
+<%@ page import="java.util.Arrays" %><%--
   Created by IntelliJ IDEA.
   User: Sergey
   Date: 22.04.2019
@@ -35,6 +36,28 @@
     Пароль <input type="text" name="login2"  value="Введите пароль"></p>
     <input type="submit" value="Войти" class="b1">
   </form>
+
+  <%!   //декларативный скреплет
+        int x = 2 ;
+        int sum(int a, int b) {
+          return a+b;
+        }
+  %>
+
+  <%     //скреплет
+        int a = 2 + x;
+        int b = 3;
+        int[] arr = {1, 2 ,3};
+
+        out.println(Arrays.toString(arr));
+        out.println(Math.pow(a, b));
+        out.println(sum(a,b));
+  %>
+
+  <br>
+  <br>
+  <br>
+  My global value = <%= x %>>
 
   </body>
 </html>
