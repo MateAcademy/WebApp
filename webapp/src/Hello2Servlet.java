@@ -4,6 +4,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -17,6 +18,7 @@ public class Hello2Servlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html");       //даем понять браузеру что ему приходит не картинка не видео не джейсон
         resp.setCharacterEncoding("UTF-8");
@@ -37,8 +39,9 @@ public class Hello2Servlet extends HttpServlet {
                     "  <head charset=\"utf-8\">\n" +
                     "    <title>Web application Мэйт Академии</title>\n" +
                     "  </head>\n" +
-                    "  <body bgcolor=\"#c0c0c0\">\n </html>" +
+                    "  <body style=\"background-image:url(girl.jpg)\">\n </html>" +
                     "Привет: login: #" + login + "#<br></h3>");
+            out.println("session account: " + session.getAttribute("sessionUser"));
         } else {
             out.println("<h3>Неверный лог/пасс</h3>");
         }

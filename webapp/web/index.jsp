@@ -18,7 +18,7 @@
     }
   </style>
 
-  <body  bgcolor="#c0c0c0">
+  <body  style="background-image:url(girl.jpg)">
 
   <form action="hello" method="post">
     <h3> Пройдите регистрацию:</h3>

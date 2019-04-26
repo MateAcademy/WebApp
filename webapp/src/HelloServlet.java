@@ -14,6 +14,7 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserRegistated userRegistated = new UserRegistated();
+        HttpSession session = req.getSession();
 
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html");       //даем понять браузеру что ему приходит не картинка не видео не джейсон
@@ -24,14 +25,15 @@ public class HelloServlet extends HttpServlet {
         String login = req.getParameter("login");
 
         User alone = new User(firstName, login);
-
         boolean reg = UserRegistated.proverka(alone);
-        HttpSession session = req.getSession();
 
         if (reg) {
             out.print("You already have account, just sign in");
         } else {
-            session.setAttribute("isRegistreted", firstName);
+            if (session.getAttribute("sessionUser") == null) {
+                session.setAttribute("sessionUser", firstName);
+            }
+
             userRegistated.addNewUsers(alone);
 
             resp.setStatus(HttpServletResponse.SC_OK);
@@ -49,9 +51,9 @@ public class HelloServlet extends HttpServlet {
                 out.print("Пароль " + login + "<br>");
                 out.print("Согласен ли ты с политикой обработки данных: " + agree + "<br>");
                 out.println("Мой первый servlet, " + "метод: " + req.getMethod() + "<br>");
-                out.println("session account: " + session.getAttribute("isRegistreted"));
+                out.println("session account: " + session.getAttribute("sessionUser"));
 
-                session.setMaxInactiveInterval(10);
+                session.setMaxInactiveInterval(60);
                 userRegistated.getList();
                 System.out.println();
             }
