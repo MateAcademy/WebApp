@@ -24,14 +24,14 @@ public class Hello2Servlet extends HttpServlet {
 
         String firstName = req.getParameter("name2");
         String login = req.getParameter("login2");
-        System.out.println(firstName + "  --------  " + login);
+        System.out.println("мы заходим на сайт под именем:  " + firstName + " и паролем:  " + login);
 
         User user = new User(firstName, login);
         UserRegistated userRegistated = new UserRegistated();
         userRegistated.getList();
         boolean rez = userRegistated.proverka(user);
-        System.out.println(rez);
-
+        System.out.println("Это проверка, есть ли такой пользователь в базе данных: " + rez);
+        System.out.println();
         if (rez == true) {
             out.print("<html> " +
                     "  <head charset=\"utf-8\">\n" +

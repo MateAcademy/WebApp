@@ -13,10 +13,6 @@ public class User {
         return name;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
     @Override
     public String toString() {
         return "У нас есть пользователь:{" +

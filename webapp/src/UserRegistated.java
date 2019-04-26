@@ -14,11 +14,18 @@ public class UserRegistated {
             System.out.println(u);
     }
 
-    public boolean proverka(User alone) {
+    public static boolean proverka(User alone) {
         if (list.contains(alone)) {
             return true;
         }
         return false;
+    }
+
+    public static String nameLastUsera() {
+        int l = list.size();
+        User user = list.get(l-1);
+        String name = user.getName();
+        return name;
     }
 
 }

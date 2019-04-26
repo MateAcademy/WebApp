@@ -20,26 +20,40 @@ public class HelloServlet extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         PrintWriter out = resp.getWriter();  //это мы запрос печатаем на странице
 
+        String firstName = req.getParameter("name");
+        String login = req.getParameter("login");
+
+        User alone = new User(firstName, login);
+
+
+      //  String name = UserRegistated.nameLastUsera();
+        boolean reg = UserRegistated.proverka(alone);
         HttpSession session = req.getSession();
-//        if (session.getAttribute("isRegistreted") != null && session.getAttribute("isRegistreted").equals(true)) {
-//            out.print("You already have account, just sign in");
-//        } else {
-//            resp.setStatus(HttpServletResponse.SC_OK);
+
+
+        if (reg) {
+            out.print("You already have account, just sign in");
+        } else {
+            session.setAttribute("isRegistreted", firstName);
+            userRegistated.addNewUsers(alone);
+
+            resp.setStatus(HttpServletResponse.SC_OK);
 
             if (req.getMethod().equals("GET")) {
                 System.out.println("Мы не поддерживаем работу с методом GET");
-                resp.getWriter().print("Мы не поддерживаем работу с методом GET");
+                out.print("Мы не поддерживаем работу с методом GET");
 
             } else {
 
-                String firstName = req.getParameter("name");
-                String login = req.getParameter("login");
+
                 String agree = req.getParameter("agree");
                 if (agree == null) {
                     agree = "НЕТ";
                 }
 
-                session.setAttribute("isRegistreted", firstName);
+
+
+
 
                 out.print("Name " + firstName + "<br>");
                 out.print("Пароль " + login + "<br>");
@@ -47,17 +61,16 @@ public class HelloServlet extends HttpServlet {
                 out.println("Мой первый servlet, " + "метод: " + req.getMethod() + "<br>");
                 out.println("session account: " + session.getAttribute("isRegistreted"));
 
-                User alone = new User(firstName, login);
-
-                userRegistated.addNewUsers(alone);
 
 
-                session.setMaxInactiveInterval(20);
+
+                session.setMaxInactiveInterval(10);
                 userRegistated.getList();
+                System.out.println();
             }
 
         }
 
 
     }
-
+}
