@@ -25,11 +25,8 @@ public class HelloServlet extends HttpServlet {
 
         User alone = new User(firstName, login);
 
-
-      //  String name = UserRegistated.nameLastUsera();
         boolean reg = UserRegistated.proverka(alone);
         HttpSession session = req.getSession();
-
 
         if (reg) {
             out.print("You already have account, just sign in");
@@ -42,18 +39,11 @@ public class HelloServlet extends HttpServlet {
             if (req.getMethod().equals("GET")) {
                 System.out.println("Мы не поддерживаем работу с методом GET");
                 out.print("Мы не поддерживаем работу с методом GET");
-
             } else {
-
-
                 String agree = req.getParameter("agree");
                 if (agree == null) {
                     agree = "НЕТ";
                 }
-
-
-
-
 
                 out.print("Name " + firstName + "<br>");
                 out.print("Пароль " + login + "<br>");
@@ -61,16 +51,10 @@ public class HelloServlet extends HttpServlet {
                 out.println("Мой первый servlet, " + "метод: " + req.getMethod() + "<br>");
                 out.println("session account: " + session.getAttribute("isRegistreted"));
 
-
-
-
                 session.setMaxInactiveInterval(10);
                 userRegistated.getList();
                 System.out.println();
             }
-
         }
-
-
     }
 }

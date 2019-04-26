@@ -27,5 +27,4 @@ public class UserRegistated {
         String name = user.getName();
         return name;
     }
-
 }

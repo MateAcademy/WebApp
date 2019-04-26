@@ -43,5 +43,4 @@ public class Hello2Servlet extends HttpServlet {
             out.println("<h3>Неверный лог/пасс</h3>");
         }
     }
-
 }
