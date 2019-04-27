@@ -37,27 +37,14 @@
     <input type="submit" value="Войти" class="b1">
   </form>
 
-  <%!   //декларативный скреплет
-        int x = 2 ;
-        int sum(int a, int b) {
-          return a+b;
-        }
-  %>
-
-  <%     //скреплет
-        int a = 2 + x;
-        int b = 3;
-        int[] arr = {1, 2 ,3};
-
-        out.println(Arrays.toString(arr));
-        out.println(Math.pow(a, b));
-        out.println(sum(a,b));
-  %>
-
-  <br>
-  <br>
-  <br>
-  My global value = <%= x %>>
-
-  </body>
+<%-- <br>
+ <form action="hello3" method="post">
+ <select multiple name = "professional" size="3" >
+ <option>Инженер</option>
+ <option>кассир</option>
+ <option>разработчик</option>
+ </select>
+ <input type="submit">
+ </form>--%>
+ </body>
 </html>
